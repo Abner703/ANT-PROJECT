@@ -1,173 +1,993 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Abner Nteteubaka — Portfolio Ingénierie, Cybersécurité & IA</title>
+    <meta name="description" content="Portfolio officiel d'Abner Nteteubaka, étudiant en Sciences Informatiques à l'UPC (Kinshasa), spécialisé en développement web, cybersécurité (pentesting) et prompt engineering.">
+    <meta property="og:title" content="Abner Nteteubaka — Portfolio Ingénierie, Cybersécurité & IA">
+    <meta property="og:description" content="Développement web, audit de sécurité applicative, pentesting et solutions numériques avancées par Abner Nteteubaka.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <nav>
-                <ul>
-                    <li><a href="#Accueil">Home</a></li>
-                    <li><a href="#Apropos">About</a></li>
-                    <li><a href="#Competence">Skills</a></li>
-                    <li><a href="#Contact">Contact</a></li>
-                </ul>
+    <!-- Interactive Background Canvas & Ambient Lights -->
+    <canvas id="cyber-canvas"></canvas>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- ----------------- Header / Navigation (Top Bar Contract) ----------------- -->
+    <header class="site-header" id="main-nav">
+        <div class="container nav-container">
+            <!-- Zone 1: Single text element Brand -->
+            <div class="brand-zone">
+                <a href="#accueil" class="brand-wordmark">
+                    ABNER <span class="brand-accent">NT7</span><span class="brand-badge">CORE</span>
+                </a>
+            </div>
+
+            <!-- Zone 2: Navigation Links -->
+            <nav class="desktop-nav">
+                <a href="#accueil" class="nav-link active">Accueil</a>
+                <a href="#apropos" class="nav-link">À Propos</a>
+                <a href="#competences" class="nav-link">Compétences</a>
+                <a href="#projets" class="nav-link">Projets</a>
+                <a href="#parcours" class="nav-link">Parcours</a>
+                <a href="#terminal" class="nav-link">Terminal</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
+
+            <!-- Zone 3: Actions -->
+            <div class="header-actions">
+                <button class="btn-nav-action open-cv-btn" title="Consulter le Curriculum Vitae">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>CV Complet</span>
+                </button>
+
+                <button class="btn-menu-toggle" id="mobile-menu-btn" aria-label="Ouvrir le menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Drawer & Backdrop -->
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <aside class="mobile-drawer" id="mobile-drawer">
+        <div>
+            <div class="drawer-header">
+                <a href="#accueil" class="brand-wordmark">
+                    ABNER <span class="brand-accent">NT7</span>
+                </a>
+                <button class="modal-close-btn" id="close-drawer-btn" aria-label="Fermer le menu" style="position:static; width:34px; height:34px;">✕</button>
+            </div>
+            <nav class="drawer-nav">
+                <a href="#accueil" class="drawer-link">▹ Accueil</a>
+                <a href="#apropos" class="drawer-link">▹ À Propos & Profil</a>
+                <a href="#competences" class="drawer-link">▹ Compétences & Cyber</a>
+                <a href="#projets" class="drawer-link">▹ Projets & Réalisations</a>
+                <a href="#parcours" class="drawer-link">▹ Expériences & Formation</a>
+                <a href="#terminal" class="drawer-link">▹ Terminal Interactif</a>
+                <a href="#contact" class="drawer-link">▹ Contact Direct</a>
+            </nav>
+        </div>
+
+        <div class="drawer-footer">
+            <button class="btn-primary open-cv-btn" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+                Consulter le CV (PDF)
+            </button>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">Kinshasa, RDC · anteteubaka@gmail.com</p>
+        </div>
+    </aside>
+
     <main>
+        <!-- ----------------- SECTION ACCUEIL (HERO) ----------------- -->
+        <section id="accueil" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge-status">
+                        <span class="status-pulse-dot"></span>
+                        <span>DISPONIBLE POUR PROJETS & MISSIONS TECH · KINSHASA</span>
+                    </div>
 
-        <!------------------ Accueil--------------------->
-        <section id="Accueil" class="acl-sct">
-            <div class="Acl">
-                <div class="bvn-msg"> <!--Bienvenue message-->
-                    <h1>OFFICIAL <em>ANT7</em></h1>
-                    <p>Welcome to the Abner's official portfolio !</p>
-                    <p>Welcome to the Tech world !</p>
-                </div>
-                <div class="photo">
+                    <h1 class="hero-title">
+                        Concevoir le Futur,
+                        <span class="name-highlight">Abner Nteteubaka</span>
+                    </h1>
 
-                    <img src="1778426717810.png" alt="photo" width="340px">
-                    <h3><em>ABNER NTETEUBAKA</em></h3>
-                </div>
-            </div>
+                    <div class="hero-subtitle-box">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </div>
 
-        </section>
+                    <p class="hero-lead">
+                        Étudiant en Sciences Informatiques (L2) à l'Université Protestante au Congo (UPC). Bâtisseur passionné par l'architecture logicielle, le pentesting d'applications et les applications concrètes de l'IA générative.
+                    </p>
 
+                    <div class="hero-actions">
+                        <a href="#projets" class="btn-primary">
+                            <span>Explorer mes projets</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <button class="btn-secondary open-cv-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span>Voir le CV complet</span>
+                        </button>
+                    </div>
 
-        <!------------------ Apropos--------------------->
-        <section id="Apropos" class="aps-sct"> <!--Apropos Section-->
-            <div class="Aps"> <!--Apropos-->
-                <h2>About</h2>
-                <p>I am Abner Nteteubaka 🤴🏾, a student of computer Science at the Protestant University in Congo (UPC) and
-                    passionate about <em>technology</em> and <em>digital universe</em>. <br />
-                    Curious and motivated, I gradually build my skills to create innovate and useful solutions.🌟
-                </p>
-            </div>
-
-        </section>
-
-
-        <!------------------ Competences--------------------->
-        <section id="Competence" class="cpt-sct">
-            <h2>Skills</h2>
-            <div class="list-card1">
-                <div class="card">
-                    <h3>Programming Logic</h3>
-                    <p>Good analytical, algorithmic structuring and problem-solving skills.</p><br><br>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 90%;"></div>
-                    </div><br>
-                    <h4>90%</h4>
-                </div>
-
-
-                <div class="card">
-                    <h3>Python</h3>
-                    <p>Good command of data structure, conditional and iterative logic, function design and the basics
-                        of Object-Oriented Programming (OOP)</p><br><br><br><br>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 90%;"></div>
-                    </div><br>
-                    <h4>90%</h4>
-                </div>
-
-                <div class="card">
-                    <h3>C progamming language</h3>
-                    <p>Good command of fundamentals, including variables, control structures, functions, arrays and
-                        algorithmic problem solving</p><br><br><br><br>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 80%;"></div>
-                    </div><br>
-                    <h4>80%</h4>
+                    <div class="hero-metrics-strip">
+                        <div class="metric-item">
+                            <span class="metric-number">L2<span class="plus">/UPC</span></span>
+                            <span class="metric-label">Sciences Informatiques</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">3<span class="plus">+</span></span>
+                            <span class="metric-label">Années de pratique code</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">100<span class="plus">%</span></span>
+                            <span class="metric-label">Rigueur & Audit Sécurité</span>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-
-
-            <div class="list-card2">
-
-                <div class="card">
-                    <h3>HTML/CSS/JS</h3>
-                    <p>Solid command of semantic structuring with HTML, good command of responsive layout and design
-                        with CSS, as well as intermediate knoledge in JavaScript</p><br><br><br><br>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 85%;"></div>
-                    </div><br>
-                    <h4>85%</h4>
+                <!-- Photo & Hologram Card -->
+                <div class="hero-photo-wrapper">
+                    <div class="photo-holo-frame">
+                        <div class="floating-tech-badge">
+                            <span class="shield-icon">🛡️</span>
+                            <div>
+                                <div class="badge-mini-label">Spécialité</div>
+                                <div class="badge-main-text">Cybersécurité & Pentest</div>
+                            </div>
+                        </div>
+                        <img src="1778426717810.png" alt="Abner Nteteubaka" class="photo-inner-img" loading="eager">
+                        <div class="photo-caption">
+                            <h3>ABNER NTETEUBAKA</h3>
+                            <p>Software Engineer · Pentester · IA</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="card">
-                    <h3>Flask</h3>
-                    <p>Framework basics, understanding of routes, HTTP requests and the general structure of a web
-                        application, with an introduction to backend development</p><br><br><br><br>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 75%;"></div>
-                    </div><br>
-                    <h4>75%</h4>
-                </div>
-
             </div>
         </section>
 
-
-        <!------------------ Contact--------------------->
-
-        <section id="Contact" class="ctc-sct"> <!--Contact Section-->
-            <h2>Contact</h2>
-            <p>Feel free to reach out to me for any inquiries, collaborations, or opportunities. I am open to
-                connecting with fellow professionals, potential employers, and anyone interested in discussing
-                technology and innovation. You can contact me via email at <a href="mailto:anteteubaka@gmail.com"
-                        target="_blank"><em>anteteubaka@gmail.com</em></a></p>
-            </div>
-            <div class="ctc"> <!--Contact formulaire-->
-                <div class="ctc-tl"> <!--Contact title-->
-                    <h3><em>Contact Form</em></h3>
+        <!-- ----------------- SECTION A PROPOS ----------------- -->
+        <section id="apropos">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">01. Profil & Philosophie</div>
+                    <h2 class="section-title">Construire des systèmes robustes, du code à la sécurité</h2>
+                    <p class="section-description">
+                        Curiosité méthodique, apprentissage continu et engagement pour des solutions numériques à fort impact.
+                    </p>
                 </div>
 
-                <form>
-
-                    <div class="ipt-cls"> <!--Input class-->
-                        <input type="text" id="nom" name="Name" placeholder="Full name" required>
+                <div class="about-grid">
+                    <!-- Bio & Vision -->
+                    <div class="about-card">
+                        <h3 class="card-heading">
+                            <span class="icon">✦</span>
+                            <span>Profil Académique & Technique</span>
+                        </h3>
+                        <p class="bio-paragraph">
+                            Étudiant en Sciences Informatiques à l'Université Protestante au Congo (UPC), je combine une formation académique rigoureuse avec une pratique concrète et intensive des technologies modernes.
+                        </p>
+                        <p class="bio-paragraph">
+                            Passionné par le développement web de bout en bout, la cybersécurité applicative et l'intelligence artificielle appliquée (prompt engineering), j'aime concevoir des architectures résilientes : du code propre et maintenable jusqu'au durcissement des systèmes face aux menaces numériques.
+                        </p>
+                        <div class="curiosity-box">
+                            <p>
+                                « Autonome et rigoureux, mon objectif est de progresser par la pratique au sein d'équipes exigeantes et de contribuer activement à l'essor technologique en Afrique. »
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="ipt-cls">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                    </div>
+                    <!-- Soft skills, Langues & Veille -->
+                    <div class="about-card details-list">
+                        <div class="detail-block">
+                            <h4>Compétences Humaines (Soft Skills)</h4>
+                            <div class="tags-cluster">
+                                <span class="cyber-tag">Autonomie</span>
+                                <span class="cyber-tag">Leadership technique</span>
+                                <span class="cyber-tag">Travail d'équipe</span>
+                                <span class="cyber-tag">Curiosité scientifique</span>
+                                <span class="cyber-tag">Discipline</span>
+                                <span class="cyber-tag">Résolution de problèmes</span>
+                            </div>
+                        </div>
 
-                    <div class="ipt-msg"> <!--Input message class-->
-                        <textarea id="message" name="message" placeholder="text message..." required></textarea>
+                        <div class="detail-block">
+                            <h4>Maîtrise des Langues</h4>
+                            <div class="lang-grid">
+                                <div class="lang-item">
+                                    <span class="lang-name">Français</span>
+                                    <span class="lang-level">C1 · Professionnel</span>
+                                </div>
+                                <div class="lang-item">
+                                    <span class="lang-name">Lingala</span>
+                                    <span class="lang-level">C2 · Maternel</span>
+                                </div>
+                                <div class="lang-item">
+                                    <span class="lang-name">Anglais</span>
+                                    <span class="lang-level">B1 · Technique</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4>Veille Technologique & Engagements</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                                Suivi régulier des publications CVE, recherche sur les vulnérabilités applicatives (outils offensifs/défensifs), expérimentation sur les usages émergents des LLMs, contributions open source et hackathons tech.
+                            </p>
+                        </div>
                     </div>
-                </form>
-                <div class="sbt-btn">
-                    <button type="submit">Submit</button>
                 </div>
             </div>
+        </section>
 
+        <!-- ----------------- SECTION COMPETENCES ----------------- -->
+        <section id="competences">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">02. Stack & Savoir-faire</div>
+                    <h2 class="section-title">Compétences Techniques & Cybersécurité</h2>
+                    <p class="section-description">
+                        Maîtrise équilibrée entre le développement frontend/backend moderne, les fondations système et la sécurité offensive.
+                    </p>
+                </div>
+
+                <div class="skills-filter-nav">
+                    <button class="filter-btn active" data-filter="all">Toutes les compétences</button>
+                    <button class="filter-btn" data-filter="dev">Développement Web & Systèmes</button>
+                    <button class="filter-btn" data-filter="cyber">Cybersécurité & Pentest</button>
+                    <button class="filter-btn" data-filter="tools">Outils & Intelligence Artificielle</button>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- HTML / CSS / JS -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🌐</div>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <h3 class="skill-card-title">HTML5 / CSS3 / JavaScript (ES6+)</h3>
+                            <p class="skill-card-desc">
+                                Structuration sémantique, design responsive avancé, manipulation DOM réactive et interfaces fluides sans frameworks superflus.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Python & Backend -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🐍</div>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <h3 class="skill-card-title">Python & Flask</h3>
+                            <p class="skill-card-desc">
+                                Programmation Orientée Objet (POO), automatisation de scripts, développement d'APIs REST avec Flask et analyse de flux.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- C Programming -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">⚙️</div>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <h3 class="skill-card-title">Langage C</h3>
+                            <p class="skill-card-desc">
+                                Gestion fine de la mémoire, pointeurs, structures algorithmiques complexes, optimisation bas niveau et résolution de problèmes.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="80%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cybersécurité & Pentest -->
+                    <div class="skill-card" data-category="cyber">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🛡️</div>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <h3 class="skill-card-title">Cybersécurité & Pentesting</h3>
+                            <p class="skill-card-desc">
+                                Tests d'intrusion applicative (Burp Suite), audit OWASP Top 10, sécurisation de comptes, hachage, chiffrement et protection des données.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks Modernes -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">⚛️</div>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <h3 class="skill-card-title">React, Tailwind CSS & Bootstrap</h3>
+                            <p class="skill-card-desc">
+                                Composants modulaires réutilisables, design systems modernes, utilitaires CSS haute performance et intégrations d'états réactifs.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- PHP & MySQL -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🗄️</div>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <h3 class="skill-card-title">PHP & Bases de Données MySQL</h3>
+                            <p class="skill-card-desc">
+                                Modélisation relationnelle (MCD/MLD), requêtes SQL optimisées, requêtes préparées contre les injections et gestion des sessions.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="80%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Outils Pro -->
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🔧</div>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <h3 class="skill-card-title">Git / GitHub, Postman & Burp Suite</h3>
+                            <p class="skill-card-desc">
+                                Gestion de versions collaborative, test et documentation d'APIs REST, interception de requêtes HTTP/HTTPS et analyse de vulnérabilités.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="88%"></div>
+                        </div>
+                    </div>
+
+                    <!-- IA & Prompt Engineering -->
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🤖</div>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <h3 class="skill-card-title">Prompt Engineering & IA Appliquée</h3>
+                            <p class="skill-card-desc">
+                                Structuration de métaprompts, intégration d'APIs de modèles de langage, automatisation du cycle de développement et veille IA générative.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Logique & Algorithmique -->
+                    <div class="skill-card" data-category="dev">
+                        <div class="skill-card-top">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-badge">🧠</div>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <h3 class="skill-card-title">Logique Algorithmique & Résolution</h3>
+                            <p class="skill-card-desc">
+                                Excellente capacité d'abstraction, décomposition modulaire de problèmes réels, optimisation de la complexité spatiale et temporelle.
+                            </p>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-progress-bar" data-width="90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------- SECTION PROJETS ----------------- -->
+        <section id="projets">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">03. Réalisations & Projets</div>
+                    <h2 class="section-title">Solutions Concrètes Déployées</h2>
+                    <p class="section-description">
+                        De la plateforme académique à grande échelle aux solutions d'audit de sécurité et aux services d'entreprise.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Projet 1: FASI Space -->
+                    <article class="project-card" data-category="web dev">
+                        <div class="project-thumb-container">
+                            <img src="/src/assets/images/fasi_space_showcase_1790678402500.jpg" alt="FASI Space — Portail Web Faculté des Sciences Informatiques UPC" loading="lazy">
+                            <div class="project-overlay-badge">FACULTÉ DES SCIENCES INFORMATIQUES · UPC</div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">FASI Space — Portail Académique UPC</h3>
+                            <p class="project-summary">
+                                Plateforme web officielle conçue pour la Faculté des Sciences Informatiques de l'Université Protestante au Congo. Centralise les cours, ressources pédagogiques, annonces et collaboration étudiante.
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">PHP / MySQL</span>
+                                <span class="tech-tag">RBAC Security</span>
+                            </div>
+                            <div class="project-footer">
+                                <span style="font-size:0.85rem; color:var(--accent-amber);">En production</span>
+                                <button class="btn-project-detail open-project-btn" data-project="fasi-space">
+                                    <span>Explorer les détails</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projet 2: ANT Technology -->
+                    <article class="project-card" data-category="web dev">
+                        <div class="project-thumb-container">
+                            <img src="/src/assets/images/ant_technology_showcase_1790678414137.jpg" alt="ANT Technology — Startup de services numériques aux PME" loading="lazy">
+                            <div class="project-overlay-badge">STARTUP & CONSEIL DIGITAL</div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">ANT Technology — Solutions Numériques PME</h3>
+                            <p class="project-summary">
+                                Plateforme web et écosystème d'une startup technologique proposant des services d'ingénierie logicielle, audit de sécurité et accompagnement à la transition digitale pour les entreprises.
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Python / Flask</span>
+                                <span class="tech-tag">Postman</span>
+                                <span class="tech-tag">Cloud Ready</span>
+                            </div>
+                            <div class="project-footer">
+                                <span style="font-size:0.85rem; color:var(--accent-cyan);">Services Actifs</span>
+                                <button class="btn-project-detail open-project-btn" data-project="ant-technology">
+                                    <span>Explorer les détails</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projet 3: Pentesting Lab Akili Inc -->
+                    <article class="project-card" data-category="cyber">
+                        <div class="project-thumb-container">
+                            <img src="/src/assets/images/ant_technology_showcase_1790678414137.jpg" alt="Pentesting Lab — Akili Inc." loading="lazy">
+                            <div class="project-overlay-badge">CYBERSÉCURITÉ APPLICATIVE</div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Audit & Pentesting Applicatif — Akili Inc.</h3>
+                            <p class="project-summary">
+                                Missions d'évaluation et tests d'intrusion réalisés dans le cadre officiel du projet Akili Inc. Analyse des vulnérabilités Web, chiffrement des données sensibles et durcissement des endpoints d'authentification.
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Burp Suite</span>
+                                <span class="tech-tag">Python Scripts</span>
+                                <span class="tech-tag">Hachage & Chiffrement</span>
+                                <span class="tech-tag">OWASP</span>
+                            </div>
+                            <div class="project-footer">
+                                <span style="font-size:0.85rem; color:var(--accent-emerald);">Missions Validées</span>
+                                <button class="btn-project-detail open-project-btn" data-project="security-lab">
+                                    <span>Explorer les détails</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projet 4: AI & Prompt Hub -->
+                    <article class="project-card" data-category="tools">
+                        <div class="project-thumb-container">
+                            <img src="/src/assets/images/fasi_space_showcase_1790678402500.jpg" alt="AI & Prompt Engineering Hub" loading="lazy">
+                            <div class="project-overlay-badge">INTELLIGENCE ARTIFICIELLE APPLIQUÉE</div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">AI & Prompt Engineering Hub</h3>
+                            <p class="project-summary">
+                                Conception d'architectures d'invites (prompt chains) et mini-outils d'automatisation pour le développement sécurisé, l'audit de code assisté par IA et l'analyse sémantique.
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Prompt Engineering</span>
+                                <span class="tech-tag">REST APIs</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LLM Integration</span>
+                            </div>
+                            <div class="project-footer">
+                                <span style="font-size:0.85rem; color:var(--accent-cyan);">Recherche Continue</span>
+                                <button class="btn-project-detail open-project-btn" data-project="ai-prompt-lab">
+                                    <span>Explorer les détails</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------- SECTION PARCOURS (EXPERIENCES & FORMATION) ----------------- -->
+        <section id="parcours">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">04. Trajectoire & Étapes</div>
+                    <h2 class="section-title">Expériences Professionnelles & Formation</h2>
+                    <p class="section-description">
+                        Un parcours combinant engagement associatif tech, responsabilités en sécurité applicative et excellence académique.
+                    </p>
+                </div>
+
+                <div class="pathway-grid">
+                    <!-- Expériences Professionnelles -->
+                    <div class="pathway-column">
+                        <h3 class="pathway-title">
+                            <span class="icon">💼</span>
+                            <span>Expériences Professionnelles</span>
+                        </h3>
+                        <div class="timeline-list">
+                            <!-- Akili Inc -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Mission Applicative</div>
+                                <h4 class="timeline-role">Pentester</h4>
+                                <div class="timeline-org">Projet Akili Inc.</div>
+                                <p class="timeline-desc">
+                                    Réalisation de tests de sécurité applicative dans le cadre strictement autorisé du projet. Détection de failles, évaluation de la robustesse des accès et proposition de correctifs de sécurité.
+                                </p>
+                            </div>
+
+                            <!-- Microsoft Community Skiller -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Animation Tech</div>
+                                <h4 class="timeline-role">Community Skiller</h4>
+                                <div class="timeline-org">Microsoft</div>
+                                <p class="timeline-desc">
+                                    Animation d'ateliers et partage de compétences techniques auprès de la communauté étudiante et des développeurs pour faciliter l'adoption des outils modernes.
+                                </p>
+                            </div>
+
+                            <!-- Cercle des Informaticiens du Congo -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Coordination & Dev</div>
+                                <h4 class="timeline-role">Chargé de coordination & développement de projets</h4>
+                                <div class="timeline-org">Cercle des Informaticiens du Congo</div>
+                                <p class="timeline-desc">
+                                    Coordination, suivi et pilotage technique de projets informatiques collectifs au sein de la principale communauté d'informaticiens de RDC.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formation Académique -->
+                    <div class="pathway-column">
+                        <h3 class="pathway-title">
+                            <span class="icon">🎓</span>
+                            <span>Formation Académique</span>
+                        </h3>
+                        <div class="timeline-list">
+                            <!-- UPC L2 -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">En cours</div>
+                                <h4 class="timeline-role">Licence en Sciences Informatiques (L2)</h4>
+                                <div class="timeline-org">Université Protestante au Congo (UPC), Kinshasa</div>
+                                <p class="timeline-desc">
+                                    Formation approfondie en algorithmique avancée, architecture des ordinateurs, bases de données relationnelles, génie logiciel, réseaux informatiques et cybersécurité.
+                                </p>
+                            </div>
+
+                            <!-- Collège Frère Zuza -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Promotion 2024</div>
+                                <h4 class="timeline-role">Baccalauréat, option Sciences</h4>
+                                <div class="timeline-org">Collège Frère Zuza, Kinshasa</div>
+                                <p class="timeline-desc">
+                                    Cursus scientifique rigoureux avec focus sur les mathématiques pures, la physique, la logique et les bases de la démarche scientifique.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------- SECTION TERMINAL CYBER (ANT-CLI) ----------------- -->
+        <section id="terminal">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">05. Console Interactive</div>
+                    <h2 class="section-title">ANT-CLI — Terminal Cyber Développeur</h2>
+                    <p class="section-description">
+                        Testez l'environnement interactif. Tapez vos commandes pour explorer les compétences, le parcours ou initier un contact rapide.
+                    </p>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="term-dot red"></span>
+                            <span class="term-dot yellow"></span>
+                            <span class="term-dot green"></span>
+                        </div>
+                        <div class="terminal-title">ant7-core@kinshasa: ~/portfolio (bash 5.2)</div>
+                        <div class="terminal-status-badge">● CONNECTÉ</div>
+                    </div>
+
+                    <div class="terminal-body">
+                        <div class="terminal-output" id="terminal-output">
+                            <div class="term-line"><span class="cmd-cyan">Bienvenue sur le terminal interactif d'Abner Nteteubaka.</span></div>
+                            <div class="term-line">Système : Ubuntu Core 24.04 LTS / ANT-Engine v2.6 / Kinshasa, RDC</div>
+                            <div class="term-line">Tapez <span class="cmd-cyan">help</span> pour afficher toutes les commandes disponibles ou cliquez sur les suggestions ci-dessous.</div>
+                        </div>
+
+                        <form id="terminal-form" class="terminal-input-row">
+                            <span class="term-prompt"><span class="prompt-long">visitor@ant7-core:~$</span><span class="prompt-short">&gt;</span></span>
+                            <input type="text" id="terminal-input" placeholder="Tapez 'help', 'skills', 'projects', 'cyber'..." autocomplete="off" spellcheck="false">
+                            <button type="submit" style="display:none;"></button>
+                        </form>
+
+                        <div class="terminal-quick-chips">
+                            <span class="quick-chips-label">Commandes rapides :</span>
+                            <button class="quick-cmd-btn" data-cmd="help">help</button>
+                            <button class="quick-cmd-btn" data-cmd="skills">skills</button>
+                            <button class="quick-cmd-btn" data-cmd="cyber">cyber</button>
+                            <button class="quick-cmd-btn" data-cmd="projects">projects</button>
+                            <button class="quick-cmd-btn" data-cmd="contact">contact</button>
+                            <button class="quick-cmd-btn" data-cmd="sudo hire">sudo hire</button>
+                            <button class="quick-cmd-btn" data-cmd="clear">clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------- SECTION CONTACT ----------------- -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">06. Collaborons</div>
+                    <h2 class="section-title">Discutons de vos Projets & Opportunités</h2>
+                    <p class="section-description">
+                        Ouvert aux recrutements, collaborations applicatives, missions d'audit de sécurité et partenariats technologiques.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Coordonnées & Accès Direct -->
+                    <div class="contact-info-panel">
+                        <!-- Email -->
+                        <div class="contact-channel-card">
+                            <div class="channel-icon">✉️</div>
+                            <div class="channel-body">
+                                <div class="channel-title">Adresse Email</div>
+                                <a href="mailto:anteteubaka@gmail.com" class="channel-value">anteteubaka@gmail.com</a>
+                            </div>
+                            <button class="channel-action-btn" id="copy-email-btn" title="Copier l'adresse email">Copier</button>
+                        </div>
+
+                        <!-- Téléphone / WhatsApp -->
+                        <div class="contact-channel-card">
+                            <div class="channel-icon">📱</div>
+                            <div class="channel-body">
+                                <div class="channel-title">Téléphone / Mobile</div>
+                                <a href="tel:+243979647633" class="channel-value">+243 97 96 47 633</a>
+                            </div>
+                            <a href="https://wa.me/243979647633" target="_blank" class="channel-action-btn" title="Discuter sur WhatsApp">WhatsApp</a>
+                        </div>
+
+                        <!-- Localisation -->
+                        <div class="contact-channel-card">
+                            <div class="channel-icon">📍</div>
+                            <div class="channel-body">
+                                <div class="channel-title">Localisation & Disponibilité</div>
+                                <div class="channel-value">Kinshasa, République Démocratique du Congo</div>
+                            </div>
+                        </div>
+
+                        <!-- Chaîne ANT Technology -->
+                        <div class="contact-channel-card">
+                            <div class="channel-icon">🚀</div>
+                            <div class="channel-body">
+                                <div class="channel-title">Chaîne Officielle</div>
+                                <div class="channel-value">ANT TECHNOLOGY (WhatsApp Channel)</div>
+                            </div>
+                            <a href="https://whatsapp.com/channel/0029Vb6L4mlliRomtPZ3eU39" target="_blank" class="channel-action-btn">Rejoindre</a>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire de contact moderne -->
+                    <div class="contact-form-card">
+                        <h3 class="form-title">Envoyez-moi un message direct</h3>
+                        <p class="form-subtitle">Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.</p>
+
+                        <form id="portfolio-contact-form">
+                            <div class="form-group">
+                                <label class="form-label" for="contact-name">Nom complet ou Entreprise</label>
+                                <input type="text" id="contact-name" class="form-control" placeholder="ex: Jean Kabamba / Société X" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contact-email">Votre Email professionnel</label>
+                                <input type="email" id="contact-email" class="form-control" placeholder="ex: nom@domaine.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contact-message">Description de votre projet ou demande</label>
+                                <textarea id="contact-message" class="form-control" placeholder="Précisez vos besoins : développement web, audit de sécurité, collaboration étudiante..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <span>Transmettre mon message</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+
+                            <div id="form-feedback" style="display:none;"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div>
-            <a href="https://www.instagram.com/abnernteteubaka/" target="_blank"><img src="instagram.png" alt="Logo Instagram"></a></li>
-        </div>
-        <div>
-            <a href="https://x.com/AbnerNteteubaka" target="_blank"><img src="twitter.png" alt="logo twitter"></a>
-        </div>
+    <!-- ----------------- FOOTER ----------------- -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Abner Nteteubaka</h3>
+                    <p>Sciences Informatiques · Développement Web & Cybersécurité · Kinshasa, RDC</p>
+                </div>
 
-        <p>© 2026 All rights reserved</p>
-        <a href="https://whatsapp.com/channel/0029Vb6L4mlliRomtPZ3eU39" target="_blank"><p>ANT TECHNOLOGY</p></a>
-    
+                <div class="footer-social-links">
+                    <a href="https://github.com/Abner703" target="_blank" class="social-icon-btn" title="GitHub d'Abner" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.instagram.com/abnernteteubaka/" target="_blank" class="social-icon-btn" title="Instagram" rel="noopener noreferrer">
+                        <img src="instagram.png" alt="Instagram">
+                    </a>
+
+                    <a href="https://x.com/AbnerNteteubaka" target="_blank" class="social-icon-btn" title="X / Twitter" rel="noopener noreferrer">
+                        <img src="twitter.png" alt="Twitter / X">
+                    </a>
+
+                    <a href="https://whatsapp.com/channel/0029Vb6L4mlliRomtPZ3eU39" target="_blank" class="social-icon-btn" title="WhatsApp Channel" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.806-5.768-5.806zm3.385 8.243c-.144.405-.837.774-1.17.824-.312.045-.694.062-2.128-.537-1.833-.765-3.003-2.628-3.094-2.748-.09-.12-1.393-1.854-1.393-3.536 0-1.681.874-2.508 1.185-2.853.311-.345.68-.431.907-.431.227 0 .454.002.653.012.21.011.493-.08.77.585.287.691.977 2.385 1.063 2.56.086.174.144.378.028.608-.115.229-.172.373-.343.576-.172.203-.362.454-.517.608-.172.173-.351.362-.15.708.201.346.895 1.474 1.919 2.387 1.319 1.176 2.43 1.54 2.776 1.713.346.173.548.144.75-.087.202-.23.864-1.008 1.094-1.354.23-.346.46-.288.776-.173.316.115 2.012.95 2.357 1.123.346.173.576.259.662.404.086.144.086.836-.058 1.241z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Abner Nteteubaka. Tous droits réservés.</p>
+                <p>Propulsé par <a href="https://whatsapp.com/channel/0029Vb6L4mlliRomtPZ3eU39" target="_blank">ANT TECHNOLOGY</a> · Kinshasa, RDC</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- ----------------- PROJECT DETAIL MODAL ----------------- -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Fermer le dialogue">✕</button>
+            <div class="modal-hero-img-wrap">
+                <img id="modal-image" src="" alt="Détail du projet">
+                <div class="modal-hero-overlay"></div>
+            </div>
+            <div class="modal-content-body">
+                <div class="modal-badge-row">
+                    <span class="modal-cat-badge" id="modal-category"></span>
+                    <span class="modal-status-badge" id="modal-status"></span>
+                </div>
+                <h3 class="modal-title" id="modal-title"></h3>
+                <p class="modal-desc" id="modal-description"></p>
 
+                <h4 class="modal-feature-title">Points Clés & Fonctionnalités :</h4>
+                <ul class="modal-features-list" id="modal-features"></ul>
+
+                <h4 class="modal-feature-title">Technologies Utilisées :</h4>
+                <div class="tags-cluster" id="modal-stack" style="margin-bottom: 2rem;"></div>
+
+                <div class="modal-meta-grid">
+                    <div>
+                        <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Rôle</span>
+                        <div style="color:#ffffff; font-weight:600;" id="modal-role"></div>
+                    </div>
+                    <div>
+                        <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Localisation</span>
+                        <div style="color:var(--accent-cyan); font-weight:600;">Kinshasa, RDC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ----------------- CV VIEWER MODAL ----------------- -->
+    <div class="modal-overlay" id="cv-modal">
+        <div class="modal-container cv-viewer-modal">
+            <button class="modal-close-btn" id="close-cv-btn" aria-label="Fermer le CV">✕</button>
+            
+            <div style="padding: 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem; border-bottom: 1px solid var(--border-subtle);">
+                <button class="btn-primary" id="print-cv-btn" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Imprimer / Télécharger en PDF</span>
+                </button>
+            </div>
+
+            <div class="cv-paper">
+                <div class="cv-header-block">
+                    <div class="cv-header-name">
+                        <h1>Abner Nteteubaka</h1>
+                        <p class="cv-title-tag">Étudiant en Sciences Informatiques — Développement, Cybersécurité & IA</p>
+                    </div>
+                    <div class="cv-contact-col">
+                        <div>Kinshasa, RDC</div>
+                        <div>anteteubaka@gmail.com</div>
+                        <div>+243 97 96 47 633</div>
+                        <div>github.com/Abner703</div>
+                        <div>LinkedIn — Abner Nteteubaka</div>
+                    </div>
+                </div>
+
+                <!-- 01 Profil -->
+                <div class="cv-section-block">
+                    <h2 class="cv-section-heading">01. Profil</h2>
+                    <p class="cv-entry-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                        Étudiant en Sciences Informatiques (UPC) passionné par le développement web, la cybersécurité et l'intelligence artificielle appliquée (prompt engineering). Autonome et curieux, j'aime construire des projets concrets de bout en bout — du code à la sécurisation des systèmes — et progresser par la pratique, au sein d'équipes exigeantes.
+                    </p>
+                </div>
+
+                <!-- 02 Formation -->
+                <div class="cv-section-block">
+                    <h2 class="cv-section-heading">02. Formation</h2>
+                    <div class="cv-entry">
+                        <div class="cv-entry-head">
+                            <span>Licence en Sciences Informatiques — L2</span>
+                            <span style="color:var(--accent-cyan); font-family:var(--font-mono);">En cours</span>
+                        </div>
+                        <div class="cv-entry-sub">Université Protestante au Congo (UPC), Kinshasa</div>
+                    </div>
+                    <div class="cv-entry">
+                        <div class="cv-entry-head">
+                            <span>Baccalauréat, option Sciences</span>
+                            <span style="color:var(--text-muted); font-family:var(--font-mono);">2024</span>
+                        </div>
+                        <div class="cv-entry-sub">Collège Frère Zuza, Kinshasa</div>
+                    </div>
+                </div>
+
+                <!-- 03 Expériences -->
+                <div class="cv-section-block">
+                    <h2 class="cv-section-heading">03. Expériences Professionnelles</h2>
+                    <div class="cv-entry">
+                        <div class="cv-entry-head">
+                            <span>Pentester</span>
+                            <span style="color:var(--accent-amber);">Projet Akili Inc.</span>
+                        </div>
+                        <p class="cv-entry-desc">Tests de sécurité applicative réalisés dans le cadre autorisé du projet.</p>
+                    </div>
+                    <div class="cv-entry">
+                        <div class="cv-entry-head">
+                            <span>Community Skiller</span>
+                            <span style="color:var(--accent-cyan);">Microsoft</span>
+                        </div>
+                        <p class="cv-entry-desc">Animation et partage de compétences techniques au sein de la communauté.</p>
+                    </div>
+                    <div class="cv-entry">
+                        <div class="cv-entry-head">
+                            <span>Chargé de coordination & développement de projets</span>
+                            <span style="color:var(--accent-emerald);">Cercle des Informaticiens du Congo</span>
+                        </div>
+                        <p class="cv-entry-desc">Coordination et suivi de projets informatiques collectifs.</p>
+                    </div>
+                </div>
+
+                <!-- 04 Projets -->
+                <div class="cv-section-block">
+                    <h2 class="cv-section-heading">04. Projets Réalisés</h2>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;">
+                        <div class="cv-entry">
+                            <div class="cv-entry-head"><span>FASI Space</span></div>
+                            <p class="cv-entry-desc">Plateforme web de la Faculté des Sciences Informatiques de l'UPC.</p>
+                        </div>
+                        <div class="cv-entry-head" style="display:block;">
+                            <div class="cv-entry-head"><span>ANT Technology</span></div>
+                            <p class="cv-entry-desc">Plateforme web d'une startup proposant des services numériques aux PME.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 Compétences & Outils -->
+                <div class="cv-section-block">
+                    <h2 class="cv-section-heading">05. Compétences & Outils</h2>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; font-size: 0.9rem;">
+                        <div>
+                            <strong>Développement :</strong> HTML / CSS / JavaScript, Python, PHP / MySQL, C, Bootstrap, Tailwind CSS, React, Prompt Engineering.<br><br>
+                            <strong>Outils :</strong> Git / GitHub, Postman, Burp Suite.
+                        </div>
+                        <div>
+                            <strong>Cybersécurité :</strong> Sécurisation comptes, Sécurité données, Sécurité logicielle, Hachage, Chiffrement.<br><br>
+                            <strong>Soft Skills & Langues :</strong> Autonomie, Leadership, Travail d'équipe, Curiosité, Discipline · Français (C1), Lingala (C2), Anglais (B1).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 Veille -->
+                <div class="cv-section-block" style="margin-bottom:0;">
+                    <h2 class="cv-section-heading">06. Veille & Centres d'intérêt</h2>
+                    <p class="cv-entry-desc">
+                        Veille active sur les nouvelles vulnérabilités, les outils offensifs/défensifs et les usages émergents de l'IA générative ; contribution à des projets open source et participation régulière à des hackathons tech.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
 </body>
-
 
 </html>

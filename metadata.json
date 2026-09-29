@@ -1,0 +1,8 @@
+{
+  "name": "ANT-PROJECT - Abner Nteteubaka Portfolio",
+  "description": "Personal portfolio website of Abner Nteteubaka showcasing software engineering skills, education, and contact information.",
+  "prompt": "Portfolio website for Abner Nteteubaka",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
