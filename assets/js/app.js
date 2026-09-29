@@ -263,7 +263,7 @@ const projectData = {
     'fasi-space': {
         title: "FASI Space — Portail Universitaire UPC",
         category: "Web & Plateforme Académique",
-        image: "/src/assets/images/fasi_space_showcase_1790678402500.jpg",
+        image: "./assets/images/fasi_space_showcase_1790678402500.jpg",
         status: "En production / Déploiement Faculté",
         description: "Plateforme web officielle conçue pour la Faculté des Sciences Informatiques de l'Université Protestante au Congo (UPC). Elle centralise les ressources académiques, la communication entre étudiants et enseignants, l'accès aux emplois du temps et les devoirs numériques.",
         features: [
@@ -278,7 +278,7 @@ const projectData = {
     'ant-technology': {
         title: "ANT Technology — Solutions & Conseil Digital PME",
         category: "Entreprise & Services Numériques",
-        image: "/src/assets/images/ant_technology_showcase_1790678414137.jpg",
+        image: "./assets/images/ant_technology_showcase_1790678414137.jpg",
         status: "Startup Active / RDC",
         description: "Plateforme web et vitrine d'une startup technologique dédiée à l'accélération numérique des PME et organisations en Afrique centrale. Offre des services allant de la conception applicative à l'audit de sécurité des systèmes d'information.",
         features: [
@@ -293,7 +293,7 @@ const projectData = {
     'security-lab': {
         title: "Audit & Pentesting Lab — Akili Inc.",
         category: "Cybersécurité & Pentest",
-        image: "/src/assets/images/ant_technology_showcase_1790678414137.jpg",
+        image: "./assets/images/ant_technology_showcase_1790678414137.jpg",
         status: "Projet de Recherche & Tests Validés",
         description: "Laboratoire d'expérimentation et méthodologie d'audit applicatif réalisée dans le cadre autorisé du projet Akili Inc. Détection de vulnérabilités Web (OWASP Top 10), analyse des flux HTTP, tests de robustesse des mots de passe et sécurisation des endpoints.",
         features: [
@@ -308,7 +308,7 @@ const projectData = {
     'ai-prompt-lab': {
         title: "AI & Prompt Engineering Hub",
         category: "Intelligence Artificielle Appliquée",
-        image: "/src/assets/images/fasi_space_showcase_1790678402500.jpg",
+        image: "./assets/images/fasi_space_showcase_1790678402500.jpg",
         status: "Projets & Expérimentations 2026",
         description: "Ensemble d'outils, chaînes d'invite (prompt chains) et mini-applications exploitant les modèles de langage de pointe pour automatiser l'analyse de code, la détection précoce d'anomalies de sécurité et l'optimisation des flux de travail de développement.",
         features: [
