@@ -661,7 +661,16 @@ nav.desktop-nav {
 
 .floating-tech-badge .shield-icon {
     color: var(--accent-amber);
-    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-card h3.card-heading span.icon,
+.pathway-column h3.pathway-title span.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .badge-mini-label {
